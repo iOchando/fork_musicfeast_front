@@ -1,0 +1,22 @@
+// // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // /
+/* // // terms-and-conditions // // */ 
+// // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // /
+#terms-and-conditions {
+  position: relative;
+  padding-inline: var(--margin-global);
+
+  &--content {
+    padding-inline: var(--margin-separator);
+    h3 {font-size: 1.875em; text-transform: capitalize}
+    ul {
+      padding-left: 5ch;
+      @include media(max, x-small) {padding-left: 0}
+      list-style: none;
+      li {
+        margin-block: 4ch;
+        h6 {text-transform: uppercase}
+        p, h6 {font-size: 1.25em; margin-bottom: 2ch; line-height: 1.4}
+      }
+    }
+  }
+}

@@ -1,0 +1,378 @@
+// @forward "base";
+// @forward "default-settings";
+// @forward "mixins";
+// @forward "personal-classes";
+// @forward "responsive";
+// @forward "variables";
+// @use "mixins" as *;
+// @use "variables" as *;
+@import "base";
+@import "default-settings";
+@import "mixins";
+@import "personal-classes";
+@import "responsive";
+@import "variables";
+
+
+
+///////////////////// global ///////////////////////
+:root {
+  --margin-separator: 48px;
+  @include media(max, x-small) {--margin-separator: 18px};
+}
+
+
+// container-table--expansion
+.container-table--expansion {
+  .v-expansion-panel-content__wrap {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .v-data-table {
+    margin-bottom: 3em;
+    padding: 1.5em;
+    background-color: rgba(0, 0, 0, .4);
+    * {border-color: var(--accent)}
+    thead {
+      tr {
+        th {
+          // &:nth-of-type(3n) {
+          //   width: 100%;
+          //   display: inline-flex;
+          //   justify-content: center;
+          //   align-items: center;
+          // }
+          span {
+            font-size: 1.125em;
+            text-transform: uppercase;
+            font-weight: 600;
+          }
+        }
+      }
+    }
+    tbody {
+      tr {
+        td {
+          padding-block: 1em;
+          font-weight: 700;
+        }
+        &:hover {background-color: transparent}
+      }
+    }
+  }
+}
+
+// custome cards
+.v-responsive__content .v-card.custome:only-child {margin-inline: auto}
+.v-card.custome {
+  --spacing: .5em;
+  --w: 100%;
+  --h: max-content;
+  --min-h: 427.2px;
+  --bg: var(--bg-tier-hover);
+  &.comming {pointer-events: none}
+  @include media(min, small) {--w: min(100%, 300px)}
+  .v-image:not(.v-avatar .v-image) {
+    --w: 100%;
+    --h: 272px;
+    --br: 5px;
+    max-height: var(--h);
+    min-height: var(--h);
+    height: var(--h);
+    overflow: hidden;
+    position: relative;
+    .v-image__image {transition: .5s $ease}
+
+    // tag state
+    &::before {
+      content: var(--tag-state);
+      z-index: 1;
+      position: absolute;
+      right: var(--spacing);
+      top: var(--spacing);
+
+      display: grid;
+      place-content: center;
+
+      @include btn;
+      --br: 2px;
+      --w: max-content;
+      --bg: linear-gradient(to right, #EE3938, #000000);
+      --min-h: 2.3em;
+      --fs: 12.8px;
+      --p: 0 1.5em;
+      font-weight: 600;
+      text-transform: capitalize;
+    }
+
+    // tag tier
+    &::after {
+      content: var(--tag-tier);
+      position: absolute;
+      left: 0;
+      bottom: 0;
+
+      display: grid;
+      place-content: center;
+
+      @include btn;
+      --bg: var(--bg-tier);
+      --br: 5px;
+      --w: max-content;
+      --min-h: 2.3em;
+      --fs: 12.8px;
+      --p: 0 1.5em;
+      font-weight: 600;
+      text-transform: capitalize;
+    }
+  }
+  .container-content {
+    position: relative;
+    margin-block: calc(20px + 5px) 1.2em;
+    .v-avatar {
+      @include absolute(0,-50px,0,);
+    }
+  }
+  h5 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: .8em;
+    color: var(--accent) !important;
+  }
+  a {font-size: 15px; text-decoration: underline; margin-bottom: 5px}
+  p {
+    font-size: 15px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  span.floor {font-size: 15px; font-weight: bold}
+
+  // tier background
+  --bg-tier: #280909;
+  --bg-tier-hover: #000;
+  &.uranium {--bg-tier: linear-gradient(to top right, #87B95C, #9F9B1B, #0C4020)}
+  &.diamond {--bg-tier: linear-gradient(to top right, #DBDBDB, #AC38EE, #45348E, #B49176)}
+  &.platinum {--bg-tier: linear-gradient(to top right, #DBD9D7, #D27073, #503367, #000000)}
+  &.gold {--bg-tier: linear-gradient(to top right, #EE9938, #672F04)}
+  &.silver {--bg-tier: linear-gradient(to top right, #D1D1D1, #000000)}
+  &.bronze {--bg-tier: linear-gradient(to top right, #7D3716, #D57535, #5E170B)}
+  // tier background hover
+  &.uranium:hover {--bg-tier-hover: linear-gradient(to top right, #87B95C, #9F9B1B, #0C4020)}
+  &.diamond:hover {--bg-tier-hover: linear-gradient(to top right, #DBDBDB, #AC38EE, #45348E, #B49176)}
+  &.platinum:hover {--bg-tier-hover: linear-gradient(to top right, #DBD9D7, #D27073, #503367, #000000)}
+  &.gold:hover {--bg-tier-hover: linear-gradient(to top right, #EE9938, #672F04)}
+  &.silver:hover {--bg-tier-hover: linear-gradient(to top right, #D1D1D1, #000000)}
+  &.bronze:hover {--bg-tier-hover: linear-gradient(to top right, #7D3716, #D57535, #5E170B)}
+  // normal hover
+  &:hover:not(.uranium, .diamond, .platinum, .gold, .silver, .bronze) {
+    box-shadow: 0 0 0 1px var(--accent) !important;
+    .v-image:not(.v-avatar .v-image) .v-image__image {--t: scale(1.2)}
+  }
+  // tier tag background
+  &.uranium .v-image::after {--bg-tier: linear-gradient(to right, #87B95C, #9F9B1B, #0C4020)}
+  &.diamond .v-image::after {--bg-tier: linear-gradient(to right, #DBDBDB, #AC38EE, #45348E, #B49176)}
+  &.platinum .v-image::after {--bg-tier: linear-gradient(to right, #DBD9D7, #D27073, #503367, #000000)}
+  &.gold .v-image::after {--bg-tier: linear-gradient(to right, #EE9938, #672F04)}
+  &.silver .v-image::after {--bg-tier: linear-gradient(to right, #D1D1D1, #000000)}
+  &.bronze .v-image::after {--bg-tier: linear-gradient(to right, #7D3716, #D57535, #5E170B)}
+}
+
+// h2 titles
+h2.Title {
+  font-size: 3em;
+  // lines separators
+  position: relative;
+  padding-bottom: 25px;
+  padding-inline: var(--margin-separator);
+  margin-top: 1em;
+  margin-bottom: var(--h-title);
+  border: 0 solid var(--primary);
+  border-left-width: 1px;
+  border-bottom-width: 1px;
+  &::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: calc(var(--h-title));
+    
+    right: 0;
+    bottom: calc(var(--h-title) * -1);
+    border-right: 1px solid var(--primary);
+  }
+  @include media(max, 1000px) {
+    margin-bottom: calc(var(--h-title) / 2);
+    &::after {
+      bottom: calc(var(--h-title) / 2 * -1);
+      height: calc(var(--h-title) / 2);
+    }
+  }
+}
+
+// expansion panels
+.custome-expansion {
+  --margin-line: 2em;
+  box-shadow: none !important;
+  position: relative;
+  &:not(#artist-about) {padding-inline: var(--margin-separator)}
+  &#artist-about {
+    margin-bottom: calc(var(--margin-line) * 1.8);
+    padding-bottom: var(--margin-line);
+    // line
+    &::after {
+      content: "";
+      @include absolute(0,auto,0,0);
+      width: 100%;
+      height: 1px;
+      background-color: var(--primary);
+    }
+  }
+  .v-expansion-panel {
+    background-color: transparent !important;
+    &:not(:first-of-type) {margin-top: 1em}
+    &::before {display: none !important}
+    i {font-size: 1.8em}
+    p {
+      line-height: 1.2;
+      &:last-child {margin-bottom: 0 !important}
+    }
+    &-header {
+      font-size: 1.5em;
+      border-radius: 5px;
+      background-color: rgb(0, 0, 0, .4);
+      &--active, &:hover {
+        --c: var(--accent) !important;
+        background-color: rgb(0, 0, 0, .8);
+      }
+    }
+    &-content__wrap {padding-top: 16px}
+  }
+}
+
+// profit
+.container-profit {
+  --margin-block: 3em;
+  --margin-inline: var(--margin-separator);
+  background-color: rgb(0, 0, 0, .4);
+  border-radius: 5px;
+  margin-inline: var(--margin-inline);
+  margin-block: var(--margin-block);
+  --fb: auto;
+  .v-sheet {
+    padding: 1.5em 2em;
+    position: relative;
+    &:not(:last-child)::after {
+      content: "";
+      @include absolute(auto,0,0,0);
+      width: 1px;
+      height: 60%;
+      background-color: var(--accent);
+    }
+    span {
+      &:first-of-type {
+        font-size: 1.125em;
+      }
+      & + span {
+        --c: var(--accent);
+        font-size: 2.0625em;
+        margin-top: 3px;
+      }
+    }
+    div span {
+      --c: var(--accent);
+      font-size: 2.0625em !important;
+      margin-top: 3px;
+    }
+  }
+}
+
+// search
+.search {
+  .v-input__append-inner {border-left: 1px solid #fff; transition: .2s}
+  &.primary--text .v-input__append-inner {border-left-color: var(--accent)}
+}
+
+// button
+.view-all__btn {
+  --bg: #000;
+  --p: .5em clamp(1em, 3vw, 2.5em);
+  --bs: 3px 3px 10px 6px rgba(0,0,0,.3);
+  @include media(max, small) {--w: min(80%, 40.5625em)}
+}
+
+//- drawer -//
+.v-navigation-drawer:not(.not_vuetify, .not) {
+  --w-drawer: 300px;
+  @include media(max, x-small) {--w-drawer: 100vw}
+  width: var(--w-drawer) !important;
+  background: linear-gradient(to right bottom, var(--primary), var(--secondary)) !important;
+  .v-navigation-drawer__content {
+    --h-drawer-navbar: 158.13px;
+    //
+    --padding-drawer-navbar: 2em;
+    &--header {
+      padding: 1em;
+      padding-top: var(--padding-drawer-navbar);
+      position: relative;
+      // line
+      &::before {
+        content: "";
+        @include absolute(0,auto,0,0);
+        height: 1px;
+        width: 60%;
+        background-color: var(--clr-line);
+        border-radius: 50% / 3vmax;
+      }
+    }
+
+    &--content {
+      height: calc(100% - (var(--h-drawer-navbar) + var(--padding-drawer-navbar)) );
+      & > :is(.v-expansion-panels, .v-list .v-list-item) {
+        span, img {
+          font-weight: 400;
+          color: #FFFFFF;
+        }
+      }
+      .v-list {
+        padding: 0;
+        &-item {
+          isolation: isolate;
+          position: relative;
+          &__title {
+            max-width: 60%;
+            margin-inline: auto;
+            padding: 0;
+            transition: transform .2s $ease-return;
+          }
+          &:hover:not(.active)::after {opacity: .5}
+          &.active, &:hover {
+            &::after {
+              content: "";
+              position: absolute;
+              inset: 0;
+              background-color: var(--primary);
+              z-index: -1;
+            }
+            .v-list-item__title {transform: translateX(30%)}
+          }
+        }
+      }
+    }
+    
+    &--footer {
+      padding-block: 1.5em 2em;
+      position: relative;
+      // line
+      &::before {
+        content: "";
+        @include absolute(0,0,0,auto);
+        height: 1px;
+        width: 60%;
+        background-color: var(--clr-line);
+        border-radius: 50% / 3vmax;
+      }
+    }
+  }
+}

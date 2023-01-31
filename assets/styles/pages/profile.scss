@@ -1,0 +1,159 @@
+// // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // /
+/* // // profile // // */ 
+// // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // /
+#profile {
+  position: relative;
+  padding-inline: var(--margin-global);
+  padding-bottom: 4em;
+
+  .header {
+    --bg: hsl(0, 0%, 62%, .4);
+    --w: 100vw;
+    --h: 500px;
+    margin-inline: calc(50% - 50vw);
+    .v-responsive__content {
+      position: relative;
+      display: grid;
+      place-items: center;
+    }
+    // tier tag
+    &::before {
+      content: var(--tag-tier);
+      @include absolute(0,5px,0);
+
+      @include btn;
+      --bg: var(--bg-tier);
+      --min-w: clamp(5em, 8vw, 8em);
+      --w: max-content;
+      --br: 0;
+      --fs: 1.5em;
+      --p: 8px 1em;
+      font-weight: 700;
+      text-transform: capitalize;
+      text-align: center;
+      
+      transform: translateY(-100px);
+      transition: .3s $ease-return;
+    }
+    &.hover::before {transform: translateY(0)}
+
+    .v-avatar {
+      isolation: isolate;
+      position: relative;
+      overflow: visible;
+      // gradient background
+      &::before {
+        content: "";
+        position: absolute;
+        inset: -20px;
+        border-radius: 50%;
+        background: var(--bg-tier);
+        z-index: -1;
+      }
+      label {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+      }
+      img {
+        @include absoluteCenter;
+        --w: 100%;
+        --h: 100%;
+        --br: 50%;
+        --of: cover;
+      }
+    }
+    .v-btn, label {
+      --fs: 16px;
+      --h: 28px;
+      --br: 4px;
+      --bg: #280909;
+      --p: 0 clamp(1em, 2vw, 2em);
+      font-weight: 600;
+      position: absolute;
+      left: calc(var(--margin-global) + var(--margin-separator));
+      bottom: 1.5em;
+    }
+    label {
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+    }
+  }
+
+  .container-user {
+    --padding: 2em;
+    position: relative;
+    padding: var(--padding);
+    &--social {
+      position: absolute;
+      top: calc(var(--padding) / 1.5);
+      right: 0;
+    }
+    h2 {
+      @include media(max, 1000px) {margin-top: 1.5em}
+      font-size: 2.5em;
+      text-align: center;
+    }
+    p {font-size: 1.3em; line-height: 1.2}
+  }
+
+  .container-nfts {
+    --gtc: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+    gap: 2em;
+    margin-block: 4em;
+    margin-inline: var(--margin-separator);
+    min-height: 400px;
+    .v-card {
+      aspect-ratio: 1 / 1.5 !important;
+    }
+  }
+
+  // edit profile
+  .v-form {
+    margin-block: 6em;
+    gap: 3em;
+    h2 {
+      padding-inline: 30px;
+      padding-bottom: .5em;
+      position: relative;
+      &::after {
+        content: "";
+        @include absolute(0,auto,0,0);
+        width: 100%;
+        height: 1px;
+        background-color: var(--primary);
+      }
+    }
+    section.card {
+      --bg: rgba(0, 0, 0, .4);
+      --p:3em;
+      label {
+        font-weight: bold;
+        font-size: 1.3em;
+        text-transform: capitalize;
+      }
+      .v-input {
+        overflow: hidden;
+        padding-top: 0;
+        * {text-transform: lowercase}
+        &__slot::before {
+          background-color: #6e6e6e;
+          border-color: #6e6e6e;
+        }
+      }
+    }
+    > div.center > .v-btn {
+      --fs: 16px;
+      --br: 4px;
+      &:first-of-type {
+        --bg: #fff;
+        --c: var(--primary);
+      }
+    }
+  }
+
+  .custome-expansion {
+    padding-inline: 0 !important;
+  }
+}

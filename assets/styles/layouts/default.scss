@@ -1,0 +1,42 @@
+// // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // /
+// // // layout // // // 
+// // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // /
+#layout {
+  background: center no-repeat var(--bg-ap);
+  background-size: cover;
+  &.vip {
+    background-image: linear-gradient(to right top, #F7931E, #7C4A0F);
+    #navbar {
+      &::before {background-image: linear-gradient(to right top, #F7931E, #7C4A0F) !important}
+      &.navbar-transparent::before {background: linear-gradient(to right top, hsl(32 93% 54% / .85), hsl(32 78% 27% / .85) 40%) !important}
+    }
+  }
+  // tier background
+  --bg-tier: #280909;
+  &.uranium {--bg-tier: linear-gradient(to top right, #87B95C, #9F9B1B, #0C4020)}
+  &.diamond {--bg-tier: linear-gradient(to top right, #DBDBDB, #AC38EE, #45348E, #B49176)}
+  &.platinum {--bg-tier: linear-gradient(to top right, #DBD9D7, #D27073, #503367, #000000)}
+  &.gold {--bg-tier: linear-gradient(to top right, #EE9938, #672F04)}
+  &.silver {--bg-tier: linear-gradient(to top right, #D1D1D1, #000000)}
+  &.bronze {--bg-tier: linear-gradient(to top right, #7D3716, #D57535, #5E170B)}
+  // overflow: hidden;
+  //- responsive font size -//
+  .v-main {
+    & > * {
+      @include media(max, small) {
+        font-size: clamp(10px, 1.5vw, 12px)
+      }
+    }
+  }
+  // footer margin modifiable
+  & .with {
+    padding-block: var(--h-navbar) var(--h-footer, 80px) !important
+  }
+  & .without {
+    padding-block: var(--h-navbar) 0 !important
+  }
+}
+
+#layout.variant {
+  background: center no-repeat linear-gradient(to top, var(--primary), var(--secondary));
+}

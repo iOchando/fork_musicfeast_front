@@ -1,0 +1,88 @@
+// // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // /
+/* // // marketplace // // */ 
+// // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // /
+#marketplace {
+  position: relative;
+  padding-inline: var(--margin-global);
+  padding-block: 4em;
+
+  #custome-carousel {
+    .v-window-item > .v-image > .v-responsive__content {
+      display: flex;
+      justify-content: space-evenly;
+      > * {flex-basis: 260px; min-width: 0 !important}
+      gap: 2em;
+      margin-top: 10px;
+      @include media(min, 600px) {padding-inline: calc(3.125em + 2.5em)}
+      padding-bottom: calc(50px + 40px);
+    }
+    .v-carousel__controls {
+      .v-item-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px 0;
+      }
+      button {
+        background-color: #fff;
+        border-radius: 0;
+        width: 21.2px;
+        height: 21.2px;
+        i {display: none}
+      }
+      .v-btn--active {background-color: var(--active)}
+    }
+  }
+
+  .separator {
+    --size-margin: 6em;
+    --translate: -40px;
+    @include media(max, small) {
+      --size-margin: calc(6em / 2);
+      --translate: calc(-40px / 2);
+    }
+    height: var(--size-margin);
+    position: relative;
+    &::after, &::before {pointer-events: none}
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border: 0 solid var(--primary);
+      border-left-width: 1px;
+      border-bottom-width: 1px;
+      transform: translateY(var(--translate));
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      border: 0 solid var(--primary);
+      inset: 0;border-right-width: 1px;
+      transform: translateY(calc(var(--size-margin) + var(--translate)))
+    }
+  }
+
+  .container-listed {
+    --gtc: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+    --margin-bottom: 4em;
+    gap: 2em;
+    padding-inline: var(--margin-separator);
+    padding-bottom: var(--margin-bottom);
+    margin-bottom: var(--margin-bottom);
+    position: relative;
+    // line
+    &::after {
+      content: "";
+      @include absolute(0,auto,0,0);
+      width: 100%;
+      height: 1px;
+      background-color: var(--primary);
+    }
+  }
+
+  &.vip {
+    --primary: var(--accent);
+    #custome-carousel .v-responsive__content .v-card:hover {--bs: 0 0 0 1px hsl(0, 84%, 58%) !important}
+    .container-profit {background-color: hsl(0, 84%, 20%, .4)}
+    .separator {--primary: hsl(0, 84%, 58%)}
+  }
+}

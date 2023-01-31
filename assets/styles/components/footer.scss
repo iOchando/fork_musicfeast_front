@@ -1,0 +1,72 @@
+// // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // /
+// // // footer // // // 
+// // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // /
+.v-footer {
+  transition: 0.5s $ease-return;
+  padding: clamp(2em, 4vw, 4em);
+  padding-top: 0;
+  background: linear-gradient(-90deg, var(--primary), var(--secondary)) !important;
+  @include media(max, small) {
+    // font-size: 18px !important;
+    background: var(--clr-gradient) !important;
+  }
+  @include media(max, x-small) {font-size: 14px !important}
+  .row {
+    letter-spacing: 0.03em;
+    max-width: 80%;
+    @include media(max, 1078px) {max-width: 100% !important}
+    @include media(max, small) {padding-inline: 1em !important}
+    & > *:first-child {
+      --spacing: 2em;
+      margin-bottom: var(--spacing);
+      padding-bottom: var(--spacing);
+      position: relative;
+      // line
+      &:before {
+        content: "";
+        @include absolute(0,auto,0,0);
+        height: 1px;
+        width: 98%;
+        background-color: var(--primary);
+        @include media(max, small) {background-color: var(--secondary)}
+        border-radius: 50% / 3vmax;
+      }
+    }
+    .left {
+      width: 16em;
+      @include media(max, small) {justify-content: baseline !important;align-items: baseline !important}
+    }
+    .right {
+      width: min(100%,25em);
+      // display: grid;
+      // grid-template-columns: repeat(auto-fit, minmax(min(100%, 6em), 1fr));
+      display: flex;
+      flex-wrap: wrap;
+      > * {flex: 1 1}
+      gap: 1em;
+      .v-card {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5em;
+      }
+    }
+    p {font-weight: 400;color: $clr-text-btn !important}
+    label:not(.v-label) {
+      font-weight: 700;
+      color: $clr-text-btn !important;
+      text-transform: uppercase;
+    }
+    a {color: $clr-text-btn !important;font-weight: 400}
+    span:not(.v-btn__content) {color: $clr-text-btn !important;font-weight: 300}
+    #container-copyright {
+      @include media(min, small) {max-width: 95%; margin-inline: auto}
+      span:last-of-type {
+        @include media(max, small) {max-width: 19ch}
+      }
+    }
+  }
+}
+
+.vip .v-footer {
+  --primary: var(--accent)
+}

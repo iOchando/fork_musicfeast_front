@@ -1,0 +1,84 @@
+// // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // /
+// // // navbar // // // 
+// // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // /
+#navbar {
+  font-size: 16px;
+  @include media(min, 2500px) {font-size: 19px !important}
+  @include media(max, 1000px) {font-size: 14px !important}
+  
+  @include media(min, small) {padding-inline: 3em}
+  height: var(--h-navbar) !important;
+  animation: movedown .5s $ease-return;
+  transition: 0.4s ease-in-out;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(-30deg, var(--primary), var(--secondary) 40%) !important;
+    transition: 0.4s ease-in-out;
+  }
+  &.navbar-transparent::before {background: linear-gradient(-30deg, hsl(0 84% 58% / .85), hsl(0 0% 0% / .85) 40%) !important}
+  .v-toolbar__content {
+    * {--fw: 500}
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: 2em;
+    height: var(--h-navbar) !important;
+    // overflow: hidden;
+    #logoApp {
+      width: min(70%, 7.5em);
+      min-width: 5em;
+      @include media(max, small) {width: min(70%, 5em)}
+    }
+  }
+}
+
+// // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // /
+// // // menu navbar // // // 
+// // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // /
+#menuProfile {
+  font-size: clamp(14px, 2vw, 16px);
+  margin-top: .5em;
+  padding-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  .v-list-item::before {background-color: #000}
+  .v-list-item--disabled {
+    background-color: rgba(0, 0, 0, .25);
+    min-height: max-content;
+    padding-block: .8em;
+  }
+  .v-list-item {
+    isolation: isolate;
+    position: relative;
+    &__title {transition: transform .2s $ease-return}
+    &::before {background-color: transparent}
+    &:hover:not(.active)::after {opacity: .5}
+    &.active, &:hover {
+      // background: linear-gradient(to left, #F7931E, #7C4A0F);
+      &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: var(--bg-tier);
+        z-index: -1;
+      }
+      .v-list-item__title:not(.not_transform) {transform: translateX(30%)}
+    }
+  }
+  .tag {
+    margin-top: 20px;
+    padding: 10px 24px;
+    width: 100%;
+    font-weight: 600;
+    background: var(--bg-tier);
+    display: flex;
+    justify-content: flex-end;
+    text-transform: capitalize;
+  }
+}
+
+#drawer-toggle {
+  font-size: clamp(14px, 2vw, 16px);
+}

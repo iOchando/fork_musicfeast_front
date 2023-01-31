@@ -1,0 +1,27 @@
+// // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // /
+/* // // join // // */ 
+// // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // /
+#join {
+  position: relative;
+  padding-inline: var(--margin-global);
+  width: 100vw;
+  min-height: 465px;
+  margin-inline: calc(50% - 50vw);
+  padding-block: 4em;
+  background: center no-repeat fixed url(../../../sources/images/img-parallax.jpg);
+  background-size: cover;
+  article {
+    width: min(90%, 100em);
+    background-color: hsl(0, 70%, 25%, .4);
+    padding: 1em 2em;
+    border-radius: .2vmax;
+    h2 {
+      text-align: center;
+      @include media(max, small) {text-decoration: underline}
+    }
+    p, button {font-size: 1.2em; line-height: 1.2}
+    .v-btn {
+      @include media(max, 565px) {--w: 100% !important}
+    }
+  }
+}

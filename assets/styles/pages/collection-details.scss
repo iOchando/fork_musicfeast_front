@@ -1,0 +1,111 @@
+// // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // /
+/* // // collection-details // // */ 
+// // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // /
+#collection-details {
+  position: relative;
+  padding-inline: var(--margin-global);
+  padding-bottom: 4em;
+
+  .header {
+    width: 100vw;
+    margin-inline: calc(50% - 50vw);
+    height: 500px;
+    background-color: #fff;
+    .v-responsive__content {
+      position: relative;
+      display: grid;
+      place-items: center;
+    }
+    // tier background
+    --bg-tier: #280909;
+    &.uranium {--bg-tier: linear-gradient(to top right, #87B95C, #9F9B1B, #0C4020)}
+    &.diamond {--bg-tier: linear-gradient(to top right, #DBDBDB, #AC38EE, #45348E, #B49176)}
+    &.platinum {--bg-tier: linear-gradient(to top right, #DBD9D7, #D27073, #503367, #000000)}
+    &.gold {--bg-tier: linear-gradient(to top right, #EE9938, #672F04)}
+    &.silver {--bg-tier: linear-gradient(to top right, #D1D1D1, #000000)}
+    &.bronze {--bg-tier: linear-gradient(to top right, #7D3716, #D57535, #5E170B)}
+    // tier tag
+    &::before {
+      content: var(--tag-tier);
+      @include absolute(0,5px,0);
+
+      @include btn;
+      --bg: var(--bg-tier);
+      --min-w: clamp(5em, 8vw, 8em);
+      --w: max-content;
+      --br: 0;
+      --fs: 1.5em;
+      --p: 8px 1em;
+      font-weight: 700;
+      text-transform: capitalize;
+      text-align: center;
+      
+      transform: translateY(-100px);
+      transition: .3s $ease-return;
+    }
+    &.hover::before {transform: translateY(0)}
+
+    .v-avatar {
+      isolation: isolate;
+      position: relative;
+      overflow: visible;
+      // gradient background
+      &::before {
+        content: "";
+        position: absolute;
+        inset: -20px;
+        border-radius: 50%;
+        background: var(--bg-tier);
+        z-index: -1;
+      }
+      img {
+        --w: 100%;
+        --br: 50%;
+        --of: cover;
+      }
+    }
+    .v-btn, label {
+      --fs: 16px;
+      --h: 28px;
+      --br: 4px;
+      --bg: #280909;
+      --p: 0 clamp(1em, 2vw, 2em);
+      font-weight: 600;
+      position: absolute;
+      left: calc(var(--margin-global) + var(--margin-separator));
+      bottom: 1.5em;
+    }
+    label {
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+    }
+  }
+
+  .container-user {
+    --padding: 2em;
+    position: relative;
+    padding: var(--padding);
+    &--social {
+      position: absolute;
+      top: calc(var(--padding) / 1.5);
+      right: 0;
+    }
+    h2 {
+      @include media(max, 1000px) {margin-top: 1.5em}
+      font-size: 2.5em;
+      text-align: center;
+    }
+    p {
+      @include media(min, small) {font-size: 1.2em}
+      line-height: 1.2
+    }
+  }
+
+  .container-nfts {
+    --gtc: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+    gap: 2em;
+    margin-bottom: 4em;
+    margin-inline: var(--margin-separator);
+  }
+}

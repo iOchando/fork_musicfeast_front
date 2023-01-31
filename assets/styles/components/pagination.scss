@@ -1,0 +1,20 @@
+// pagination
+.pagination {
+  font-size: clamp(14px, 2vw, 16px);
+  .v-btn {
+    min-width: max-content !important;
+    border: none !important;
+    &::before {display: none !important}
+    &.active {
+      background-color: hsl(0, 84%, 58%, .6) !important;
+      color: var(--clr-text-btn) !important;
+      & * {color: var(--clr-text-btn) !important}
+    }
+  }
+}
+.vip .pagination {
+  background-color: var(--accent) !important;
+  .v-btn.active {
+    background-color: hsl(0, 0%, 0%, .2) !important;
+  }
+}

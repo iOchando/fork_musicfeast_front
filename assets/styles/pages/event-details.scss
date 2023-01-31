@@ -1,0 +1,140 @@
+// // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // /
+/* // // event // // */ 
+// // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // /
+#event {
+  --padding-header: clamp(1em, 4vw, 4em);
+  position: relative;
+  padding-inline: var(--margin-global);
+  padding-bottom: 4em;
+
+  .header {
+    width: 100vw;
+    margin-inline: calc(50% - 50vw);
+    @include media(min, small) {--gtc: repeat(2, 1fr)}
+    &-background {
+      @include media(max, small) {height: 400px}
+      padding: var(--padding-header);
+      .v-responsive__content {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+    article {
+      --br: none;
+      padding: calc(var(--padding-header) * 2);
+      padding-bottom: calc(var(--padding-header) * 2 + 2em);
+      @include media(max, small) {padding-top: 0};
+      .v-btn span {text-transform: capitalize}
+      div .v-btn.btn {
+        --br: 5px;
+        --w: max-content;
+        --bg: linear-gradient(to right, #EE3938, #000000);
+        --min-h: 2.3em;
+        --fs: 12.8px;
+        --p: 0 1.5em;
+        font-weight: 600;
+        text-transform: capitalize;
+        @include media(max, small) {
+          --w: 100vw;
+          --br: 0;
+          --min-h: 40px;
+          --fs: 16px !important;
+          margin-inline: calc(50% - 50vw);
+          margin-bottom: 30px;
+        }
+      }
+      h2 {font-size: 3.5em}
+      span:not(.v-btn__content), p {font-weight: 500; font-size: 16px}
+      p {font-size: 16px; line-height: 1.2}
+    }
+  }
+
+  .container-profit {
+    --margin-block: 0;
+    --margin-inline: calc(50% - 50vw);
+    width: 100vw;
+  }
+
+  h2#title {
+    width: 100vw;
+    margin-inline: calc(50% - 50vw);
+    text-align: center;
+    background-color: rgb(0, 0, 0, .2);
+    margin-block: 2em;
+    padding: .8em;
+  }
+
+  .container-desc {
+    width: 100vw;
+    margin-inline: calc(50% - 50vw);
+    @include media(min, small) {--gtc: repeat(2, 1fr)}
+    > * {min-height: 300px}
+    article {
+      --bg: rgba(0, 0, 0, .4);
+      --br: none;
+      --p: calc(var(--padding-header) * 2);
+      padding-bottom: calc(var(--padding-header) * 2 + 2em);
+      h3 {font-size: 3em; font-weight: 600}
+      p {line-height: 1.2; font-weight: 400; font-size: 16px}
+    }
+  }
+
+  #gmap_canvas {
+    position: absolute;
+    inset: 0;
+  }
+  .map {
+    background-color: #000;
+    position: relative;
+    .v-btn {
+      --w: min(100%, 15em);
+      @include absolute(0,auto,0,2em);
+      & span {text-transform: uppercase}
+    }
+  }
+
+  #custome-carousel {
+    margin-bottom: 4em;
+    .v-responsive__content {
+      display: flex;
+      justify-content: space-evenly;
+      > * {flex-basis: 260px; min-width: 0 !important}
+      gap: 2em;
+      @include media(min, 600px) {padding-inline: calc(3.125em + 2.5em)}
+      .tier-desc {
+        --gap: .5em;
+        gap: var(--gap);
+        ul, a {padding-inline: 24px}
+        a {
+          line-height: 1.2;
+          text-align: center;
+          text-decoration: underline;
+        }
+        ul {
+          display: grid; gap: var(--gap);
+          li::marker {
+            color: var(--accent);
+          }
+        }
+      }
+    }
+    .v-btn--disabled {
+      background-color: #A5A5A5 !important;
+    }
+  }
+  .v-carousel__controls {
+    .v-item-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 0;
+    }
+    button {
+      background-color: #fff;
+      border-radius: 0;
+      width: 21.2px;
+      height: 21.2px;
+      i {display: none}
+    }
+    .v-btn--active {background-color: var(--active)}
+  }
+}

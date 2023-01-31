@@ -1,0 +1,47 @@
+// // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // /
+/* // // hero // // */ 
+// // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // /
+#hero {
+  position: relative;
+  width: 100vw;
+  margin-inline: calc(50% - 50vw);
+  #custome-carousel {
+    --height-desktop: 918.72px; // 750px original
+    --height-mobile: 179.89px; // 450px original
+    max-height: var(--height-desktop);
+    .v-skeleton-loader {
+      height: var(--height-desktop);
+      @include media(max, 880px) {height: var(--height-mobile)}
+    }
+    .v-responsive__content {
+      @include media(max, 880px) {min-height: var(--height-mobile)}
+    }
+    .v-image__image {
+      background-size: 100% !important;
+      @include media(max, 880px) {background-size: cover !important}
+    }
+    .v-window__prev, .v-window__next {
+      // max height referencial
+      top: 40%; // <-- if all images are same size
+      button {
+        --size: clamp(27px, 2vw, 36px);
+        width: var(--size);
+        height: var(--size);
+        i {
+          font-size: clamp(30px, 2vw, 48px) !important;
+        }
+      }
+    }
+    .v-carousel__controls {
+      button {
+        --size: clamp(20px, 2vw, 28px);
+        width: var(--size);
+        height: var(--size);
+        background-color: #fff;
+        border-radius: 0;
+        i {display: none}
+      }
+      .v-btn--active {background-color: var(--active)}
+    }
+  }
+}

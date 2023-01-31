@@ -1,0 +1,79 @@
+// // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // /
+/* // // news // // */ 
+// // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // /
+#news {
+  position: relative;
+  padding-left: var(--margin-global);
+  padding-bottom: 8em;
+  @include media(max, $query__news__lastest_releases) {
+    padding-top: 3em;
+    padding-inline: 0;
+  }
+  background-color: #000;
+  width: 100vw;
+  margin-inline: calc(50% - 50vw);
+
+  @include media(min, $query__news__lastest_releases) {
+    display: grid;
+    grid-template-columns: 1fr max-content;
+    place-items: center;
+    gap: 2em;
+  }
+  h2 {
+    font-size: clamp(2em, 3.5vw, 3.5em);
+    @include media(max, $query__news__lastest_releases) {font-size: clamp(2.5em, 4vw, 3.5em); padding-bottom: 1em}
+    @include media(max, small) {text-decoration: underline; text-align: center}
+  }
+
+
+  #slider-news {
+    @include media(min, $query__news__lastest_releases) {transform: translateY(-70px); max-width: 60em}
+    @include media(max, small) {font-size: 12px; width: 100vw; margin-inline: calc(50% - 50vw)}
+    .v-slide-group__next--disabled i,
+    .v-slide-group__prev--disabled i {filter: invert(77%)}
+    .v-slide-group__next,
+    .v-slide-group__prev {
+      @include media(max, small) {display: none !important}
+    }
+    .v-slide-group__content {
+      gap: 1.5em;
+      @include media(max, small) {
+        gap: 3em;
+        padding-inline: 16px;
+      }
+      .v-sheet {
+        display: flex;
+        flex-direction: column;
+        width: clamp(23em, 25vw, 25em);
+        gap: 1em;
+        border-radius: 15px;
+        white-space: initial;
+        h3 {font-size: 2em; font-weight: 500}
+        p {
+          font-size: 19.2px;
+          font-weight: 300;
+          line-height: 1.25;
+          display: -webkit-box;
+          -webkit-line-clamp: 11;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+      }
+    }
+  }
+  // .wrapper {
+  //   display: flex;
+  //   gap: 1em;
+  //   max-width: 60em;
+  //   @include media(min, $query__news__lastest_releases) {transform: translateY(-70px)}
+  //   @include media(max, small) {width: 100vw; margin-inline: calc(50% - 50vw); padding-inline: 1em}
+  //   .v-sheet {
+  //     display: flex;
+  //     flex-direction: column;
+  //     min-width: 25em;
+  //     gap: 1em;
+  //     h3 {font-size: 2em; font-weight: 500;}
+  //     p {font-size: 1.5em; font-weight: 300; line-height: 1.25}
+  //   }
+  // }
+}

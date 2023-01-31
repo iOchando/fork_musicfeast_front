@@ -1,0 +1,96 @@
+// // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // /
+/* // // lastest-releases // // */ 
+// // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // /
+#lastest-releases {
+  --padding: 4em;
+  position: relative;
+  padding-inline: var(--margin-global);
+  @include media(min, small) {
+  padding-bottom: var(--padding);
+  margin-bottom: var(--padding);
+  @include media(max, $query__news__lastest_releases) {margin-bottom: 0}
+  // line
+    &::before {
+      content: "";
+      @include absolute(0,auto,0,0);
+      height: 1px;
+      width: 100%;
+      background-color: var(--primary);
+      border-radius: 50% / 3vmax;
+    }
+  }
+  > *:first-child {
+    --margin: .5em;
+    @include media(max, small) {--margin: .8em}
+    padding-bottom: var(--margin);
+    margin-bottom: var(--margin);
+    position: relative;
+    // line
+    &::before {
+      content: "";
+      @include absolute(0,auto,0,0);
+      height: 1px;
+      width: 100%;
+      background-color: var(--primary);
+      border-radius: 50% / 3vmax;
+    }
+  }
+  h2 {
+    @include media(max, small) {text-decoration: underline; text-align: center}
+  }
+  .wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 304px), 1fr));
+    gap: 3em;
+    .v-card {
+      --spacing: .7em;
+      padding: var(--spacing);
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing);
+      &:hover {
+        box-shadow: 0 0 0 1px var(--accent) !important;
+        .v-image:not(.v-avatar .v-image) .v-image__image {transform: scale(1.2)}
+      }
+      @include media(min, small) {&:only-of-type {max-width: 20em}}
+      a {font-size: 20px; text-decoration: underline; margin-bottom: .3em}
+      p {
+        font-size: 17px;
+        display: -webkit-box;
+        -webkit-line-clamp: 11;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+      .v-image:not(.v-avatar .v-image) {
+        overflow: hidden;
+        position: relative;
+        --w: 100%;
+        --h: 337px;
+        --br: 5px;
+        min-height: var(--h);
+        height: var(--h);
+        .v-image__image {transition: .5s $ease}
+        // tag
+        &::after {
+          content: var(--tag);
+          position: absolute;
+          right: var(--spacing);
+          top: var(--spacing);
+
+          display: grid;
+          place-content: center;
+
+          @include btn;
+          --fs: 13px;
+          --br: 0;
+          --w: 7em;
+          --bg: linear-gradient(to right, #EE3938, #000000);
+          --min-h: 1.875em;
+          font-weight: 400;
+          text-transform: capitalize;
+        }
+      }
+    }
+  }
+}
